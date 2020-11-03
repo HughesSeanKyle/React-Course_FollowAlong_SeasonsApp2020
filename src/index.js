@@ -8,22 +8,30 @@ class App extends React.Component {
     //super is reference to parents constructor function
     super(props);
 
-    //Initial state
-    this.state = { lat: null };
-  }
+    //Only direct assignment to this.state
+    //Update state in future use setState
+    this.state = { lat: null }; //null - Not sure what lat is just yet
+
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        //To update state use setState. 
+        this.setState({ lat: position.coords.latitude });
+      },
+      err => console.log(err)
+    );
+  };
 
 
   //React says we have to define render!
   render() {
-    window.navigator.geolocation.getCurrentPosition(
-      position => console.log(position), //success callback
-      err => console.log(err)
-    );
-
-    return <div>Latitude: </div>
+    return <div>Latitude: {this.state.lat} </div>
   };
 };
 
 ReactDOM.render(
   <App />, document.querySelector('#root')
 );
+
+/*
+1. setState will get component to instantly re-render
+*/
