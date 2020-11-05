@@ -3,15 +3,9 @@ import ReactDOM from 'react-dom';
 
 class App extends React.Component {
   //Initializing State
-  constructor(props) {
-    //super is reference to parents constructor function
-    super(props);
+  state = {lat: null, errorMessage: ''};
 
-    //Only direct assignment to this.state
-    //Update state in future use setState
-    this.state = { lat: null, errorMessage: '' }; //null - Not sure what lat is just yet
 
-  };
 
   //Will automatically be called once after component is rendered to the screen
   componentDidMount() {
