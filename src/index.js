@@ -22,6 +22,16 @@ class App extends React.Component {
     );
   };
 
+  //Will automatically be called once after component is rendered to the screen
+  componentDidMount() {
+    console.log('My component was rendered to the screen');
+  };
+
+  //When setState called or state updated componentDidUpdate will be called.
+  componentDidUpdate() {
+    console.log('My component was just updated - it rerendered!');
+  };
+
 
   //React says we have to define render!
   render() { 
