@@ -11,25 +11,14 @@ class App extends React.Component {
     //Update state in future use setState
     this.state = { lat: null, errorMessage: '' }; //null - Not sure what lat is just yet
 
-    window.navigator.geolocation.getCurrentPosition(
-      position => {
-        //To update state use setState. 
-        this.setState({ lat: position.coords.latitude });
-      },
-      err => {
-        this.setState({ errorMessage: err.message });
-      }
-    );
   };
 
   //Will automatically be called once after component is rendered to the screen
   componentDidMount() {
-    console.log('My component was rendered to the screen');
-  };
-
-  //When setState called or state updated componentDidUpdate will be called.
-  componentDidUpdate() {
-    console.log('My component was just updated - it rerendered!');
+    window.navigator.geolocation.getCurrentPosition(
+      position => this.setState({ lat: position.coords.latitude }),
+      err => this.setState({ errorMessage: err.message })
+    );
   };
 
 
